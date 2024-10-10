@@ -41,7 +41,33 @@
 					}
 				},
 				"required": [
-					"title"
+					"title",
+					"console"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReviewDTO": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"rating": {
+						"type": "number",
+						"format": "double"
+					},
+					"review_text": {
+						"type": "string"
+					},
+					"game": {
+						"$ref": "#/components/schemas/GameDTO"
+					}
+				},
+				"required": [
+					"rating",
+					"review_text",
+					"game"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -58,6 +84,31 @@
 		"contact": {}
 	},
 	"paths": {
+		"/reviews": {
+			"get": {
+				"operationId": "GetAllReviews",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/ReviewDTO"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Reviews"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
 		"/games": {
 			"get": {
 				"operationId": "GetAllGames",
@@ -81,6 +132,123 @@
 				],
 				"security": [],
 				"parameters": []
+			},
+			"post": {
+				"operationId": "CreateGame",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/GameDTO"
+										}
+									],
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Games"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/GameDTO"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/games/{id}": {
+			"get": {
+				"operationId": "GetConsoleById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/GameDTO"
+										}
+									],
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Games"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "UpdateConsole",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/GameDTO"
+										}
+									],
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Games"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/GameDTO"
+							}
+						}
+					}
+				}
 			}
 		},
 		"/consoles": {
