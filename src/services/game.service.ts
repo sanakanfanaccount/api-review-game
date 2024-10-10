@@ -16,10 +16,10 @@ export class GameService {
   }
   
   // Récupère un jeu par ID
-public async getGameById(id: number): Promise<GameDTO | null> {
+public async getGameById(id: number): Promise<Game | null> {
   const game = await Game.findByPk(id);
   if(game == null){
-   return notFound("ERREUR !!")
+   return notFound("Jeu introuvable. ")
   }
   return game
  }
@@ -32,7 +32,7 @@ public async getGameById(id: number): Promise<GameDTO | null> {
   return game;
 }
 
-  // Met à jour une console
+  // Met à jour un jeu
   public async updateGame(
     id: number,
     title: string,

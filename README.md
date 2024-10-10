@@ -44,9 +44,9 @@ Permet d'être lancé sans compilation et de relancer dynamiquement l'applicatio
     ## 1) Développer le modèle Review
     ## 2) Développer le DTO Review
     ## 3) Développer la route GET /reviews
-    4) Développer la route GET /reviews/{id}
-    5) Développer la route POST /reviews : **/!\ Le jeu de la review ne sera pas créé dans cette route. Il faut que le jeu existe déjà.**
-    6) Développer la route PATCH /reviews/{id}
+    ## 4) Développer la route GET /reviews/{id}
+    ## 5) Développer la route POST /reviews : **/!\ Le jeu de la review ne sera pas créé dans cette route. Il faut que le jeu existe déjà.**
+    ## 6) Développer la route PATCH /reviews/{id}
 5) 
     1) Mettre à jour la route DELETE /consoles/{id} afin d'empêcher la suppression si une review d'un de ses jeux existe
     2) Développer la route DELETE /games/{id} en empêchant la suppression du jeu si une review existe
