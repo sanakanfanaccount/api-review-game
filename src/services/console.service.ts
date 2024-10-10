@@ -1,5 +1,6 @@
 import { notFound } from "../error/NotFoundError";
 import { Console } from "../models/console.model";
+import { Review } from "../models/review.model";
 
 export class ConsoleService {
 
@@ -53,3 +54,7 @@ export class ConsoleService {
 }
 
 export const consoleService = new ConsoleService();
+
+Console.hasMany(Review, {
+  onDelete: 'RESTRICT',
+});
