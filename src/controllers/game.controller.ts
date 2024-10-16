@@ -1,5 +1,7 @@
 import { Controller, Get, Post, Delete, Route, Path, Body, Tags, Patch } from "tsoa";
 import { GameDTO } from "../dto/game.dto";
+import { ReviewDTO } from "../dto/review.dto";
+
 import { gameService } from "../services/game.service";
 import { consoleService } from "../services/console.service";
 import { Console } from "../models/console.model";
@@ -15,12 +17,16 @@ export class GameController extends Controller {
     return gameService.getAllGames();
   }
 
-    // Récupère une jeu par ID
+    // Récupère un jeu par ID
     @Get("{id}")
-    public async getConsoleById(id: number): Promise<GameDTO | null> {
+    public async getGameById(id: number): Promise<GameDTO | null> {
       return gameService.getGameById(id);
     }
   
+    @Get("{id}/reviews")
+    public async getGameReviews(@Path() id: number): Promise<ReviewDTO[] | null> {
+      return gameService.getGameReviews(id);
+    }
     
     // Crée une nouvelle console
     @Post("/")
@@ -52,15 +58,13 @@ export class GameController extends Controller {
         }
       }
       return notFound("Console introuvable. ")
-
-
     }
 
-    /*
-    // Supprime une console par ID
+    
+    // Supprime un jeu par ID
     @Delete("{id}")
-    public async deleteConsole(@Path() id: number): Promise<void> {
-      await consoleService.deleteConsole(id);
+    public async deleteGame(@Path() id: number): Promise<void> {
+      await gameService.deleteGame(id);
     }
-    */
+    
 }

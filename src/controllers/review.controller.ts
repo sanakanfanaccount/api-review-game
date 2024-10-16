@@ -52,4 +52,10 @@ public async updategame(
   }
   return notFound("Jeu introuvable. ")
 }
+
+// Supprime une critique par ID
+@Delete("{id}")
+public async deleteReview(@Path() id: number): Promise<void> {
+  await reviewService.deleteReview(id);
+}
 }

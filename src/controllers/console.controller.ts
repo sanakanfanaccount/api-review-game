@@ -1,6 +1,8 @@
 import { Controller, Get, Post, Delete, Route, Path, Body, Tags, Patch } from "tsoa";
 import { consoleService } from "../services/console.service";
 import { ConsoleDTO } from "../dto/console.dto";
+import { GameDTO } from "../dto/game.dto";
+import { gameService } from "../services/game.service";
 
 @Route("consoles")
 @Tags("Consoles")
@@ -17,6 +19,11 @@ export class ConsoleController extends Controller {
     return consoleService.getConsoleById(id);
   }
 
+  @Get("{id}/games")
+  public async getConsoleGames(@Path() id: number): Promise<GameDTO[] | null> {
+    return consoleService.getConsoleGames(id);
+  }
+
   // Crée une nouvelle console
   @Post("/")
   public async createConsole(
@@ -28,7 +35,7 @@ export class ConsoleController extends Controller {
 
   // Supprime une console par ID
   @Delete("{id}")
-  public async deleteConsole(@Path() id: number): Promise<void> {
+  public async deleteConsole(@Path() id: number): Promise<void> { 
     await consoleService.deleteConsole(id);
   }
 

@@ -56,6 +56,15 @@ export class ReviewService {
         return notFound("Jeu introuvable. ")
       }
 
+      // Supprime une critique par ID
+  public async deleteReview(id: number): Promise<void> {
+    const review = await Review.findByPk(id);
+    if (review) {
+      review.destroy();
+      }else{
+        return notFound("Impossible de supprimer le jeu quand il a une ou plusieurs critiques ")
+      }
+    }
 }
 
 export const reviewService = new ReviewService();
