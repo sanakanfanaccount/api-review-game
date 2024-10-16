@@ -52,7 +52,7 @@ Permet d'être lancé sans compilation et de relancer dynamiquement l'applicatio
     ## 2) Développer la route DELETE /games/{id} en empêchant la suppression du jeu si une review existe
     ## 3) Développer la route DELETE /reviews/{id}
 ## 6) Renvoyer la liste des jeux de la consoles sur la route GET /consoles/{id}/games
-7) Renvoyer la liste des reviews du jeu sur la route GET /games/{id}/reviews
+## 7) Renvoyer la liste des reviews du jeu sur la route GET /games/{id}/reviews
 
 ## Exercice bonus
 
