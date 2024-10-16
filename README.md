@@ -59,4 +59,4 @@ Permet d'être lancé sans compilation et de relancer dynamiquement l'applicatio
 
 ## Exercice bonus
 
-8) Gérer des DTO différents pour l'entrée et la sortie en ajoutant des mapper permettant de passer d'un Model à un DTO et vice-versa
+## 8) Gérer des DTO différents pour l'entrée et la sortie en ajoutant des mapper permettant de passer d'un Model à un DTO et vice-versa
