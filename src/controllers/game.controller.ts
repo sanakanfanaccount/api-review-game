@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Delete, Route, Path, Body, Tags, Patch } from "tsoa";
-import { GameDTO } from "../dto/game.dto";
+import { GameDTO, Game_CreateDTO, Game_UpdateDTO } from "../dto/game.dto";
 import { ReviewDTO } from "../dto/review.dto";
 
 import { gameService } from "../services/game.service";
@@ -31,12 +31,12 @@ export class GameController extends Controller {
     // Crée une nouvelle console
     @Post("/")
     public async createGame(
-      @Body() requestBody: GameDTO
-    ): Promise<GameDTO | null> {
-      const { title, console } = requestBody;
+      @Body() requestBody: Game_CreateDTO
+    ): Promise<Game_CreateDTO | null> {
+      const { title, console_id } = requestBody;
 
-      if(console.id!=undefined){
-        const consolecopy = await consoleService.getConsoleById(console.id)
+      if(console_id!=undefined){
+        const consolecopy = await consoleService.getConsoleById(console_id)
         if(consolecopy !=null){
           return gameService.createGame(title, consolecopy);
         }
@@ -48,11 +48,11 @@ export class GameController extends Controller {
     @Patch("{id}")
     public async updateConsole(
       @Path() id: number,
-      @Body() requestBody: GameDTO
-    ): Promise<GameDTO | null> {
-      const { title, console} = requestBody;
-      if(console.id!=undefined){
-        const consolecopy = await consoleService.getConsoleById(console.id)
+      @Body() requestBody: Game_UpdateDTO
+    ): Promise<Game_UpdateDTO | null> {
+      const { title, console_id} = requestBody;
+      if(console_id!=undefined){
+        const consolecopy = await consoleService.getConsoleById(console_id)
         if(consolecopy !=null){
           return gameService.updateGame(id,title, consolecopy);
         }

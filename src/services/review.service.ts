@@ -1,12 +1,13 @@
-import { ReviewDTO } from "../dto/review.dto";
+import { ReviewDTO , Review_CreateDTO, Review_UpdateDTO, Review_GetDTO} from "../dto/review.dto";
 import { GameDTO } from "../dto/game.dto";
 import { Game } from "../models/game.model";
 import { Review } from "../models/review.model";
 import { notFound } from "../error/NotFoundError";
 
 export class ReviewService {
-  public async getAllReviews(): Promise<ReviewDTO[]> {
+  public async getAllReviews(): Promise<Review_GetDTO[]> {
     return await Review.findAll({
+      attributes : ['id', 'rating', 'review_text'],
       include: [
         {
           model: Game,
@@ -16,7 +17,7 @@ export class ReviewService {
     });
   }
     // Récupère un critique de jeu par ID
-    public async getReviewById(id: number): Promise<ReviewDTO | null> {
+    public async getReviewById(id: number): Promise<Review_GetDTO | null> {
     const review = await Review.findByPk(id);
     if(review == null){
      return notFound("Critique de jeu introuvable. ")
@@ -29,7 +30,7 @@ export class ReviewService {
     rating: number,
     review_text : string,
     game: Game
-  ): Promise<ReviewDTO | null> {
+  ): Promise<Review_CreateDTO | null> {
     const review = await Review.create({ rating: rating, review_text: review_text,game_id : game.id, game:game});
     return review;
   }

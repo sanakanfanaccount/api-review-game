@@ -35,6 +35,38 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Review_GetDTO": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"double"},
+            "rating": {"dataType":"double","required":true},
+            "review_text": {"dataType":"string","required":true},
+            "game": {"ref":"GameDTO","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Review_CreateDTO": {
+        "dataType": "refObject",
+        "properties": {
+            "rating": {"dataType":"double","required":true},
+            "review_text": {"dataType":"string","required":true},
+            "game_id": {"dataType":"double","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Review_UpdateDTO": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"double"},
+            "rating": {"dataType":"double","required":true},
+            "review_text": {"dataType":"string","required":true},
+            "game_id": {"dataType":"double","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ReviewDTO": {
         "dataType": "refObject",
         "properties": {
@@ -42,6 +74,25 @@ const models: TsoaRoute.Models = {
             "rating": {"dataType":"double","required":true},
             "review_text": {"dataType":"string","required":true},
             "game": {"ref":"GameDTO","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Game_CreateDTO": {
+        "dataType": "refObject",
+        "properties": {
+            "title": {"dataType":"string","required":true},
+            "console_id": {"dataType":"double","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Game_UpdateDTO": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"double"},
+            "title": {"dataType":"string","required":true},
+            "console_id": {"dataType":"double","required":true},
         },
         "additionalProperties": false,
     },
@@ -128,7 +179,7 @@ export function RegisterRoutes(app: Router) {
 
             async function ReviewController_createGame(request: ExRequest, response: ExResponse, next: any) {
             const args: Record<string, TsoaRoute.ParameterSchema> = {
-                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"ReviewDTO"},
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"Review_CreateDTO"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -159,7 +210,7 @@ export function RegisterRoutes(app: Router) {
             async function ReviewController_updategame(request: ExRequest, response: ExResponse, next: any) {
             const args: Record<string, TsoaRoute.ParameterSchema> = {
                     id: {"in":"path","name":"id","required":true,"dataType":"double"},
-                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"ReviewDTO"},
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"Review_UpdateDTO"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -308,7 +359,7 @@ export function RegisterRoutes(app: Router) {
 
             async function GameController_createGame(request: ExRequest, response: ExResponse, next: any) {
             const args: Record<string, TsoaRoute.ParameterSchema> = {
-                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"GameDTO"},
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"Game_CreateDTO"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -339,7 +390,7 @@ export function RegisterRoutes(app: Router) {
             async function GameController_updateConsole(request: ExRequest, response: ExResponse, next: any) {
             const args: Record<string, TsoaRoute.ParameterSchema> = {
                     id: {"in":"path","name":"id","required":true,"dataType":"double"},
-                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"GameDTO"},
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"Game_UpdateDTO"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

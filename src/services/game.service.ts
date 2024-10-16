@@ -1,4 +1,4 @@
-import { GameDTO } from "../dto/game.dto";
+import { GameDTO, Game_CreateDTO, Game_UpdateDTO } from "../dto/game.dto";
 import { Console } from "../models/console.model";
 import { Game } from "../models/game.model";
 import { notFound } from "../error/NotFoundError";
@@ -7,6 +7,7 @@ import { Review } from "../models/review.model";
 export class GameService {
   public async getAllGames(): Promise<GameDTO[]> {
     return await Game.findAll({
+      attributes : ['id', 'title'],
       include: [
         {
           model: Console,
@@ -40,7 +41,7 @@ public async getGameById(id: number): Promise<Game | null> {
  public async createGame(
   title: string,
   console: Console
-): Promise<GameDTO | null> {
+): Promise<Game_CreateDTO | null> {
   const game = await Game.create({ title: title, console_id : console.id, console : console});
   return game;
 }

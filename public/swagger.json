@@ -47,6 +47,79 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"Review_GetDTO": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"rating": {
+						"type": "number",
+						"format": "double"
+					},
+					"review_text": {
+						"type": "string"
+					},
+					"game": {
+						"$ref": "#/components/schemas/GameDTO"
+					}
+				},
+				"required": [
+					"rating",
+					"review_text",
+					"game"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Review_CreateDTO": {
+				"properties": {
+					"rating": {
+						"type": "number",
+						"format": "double"
+					},
+					"review_text": {
+						"type": "string"
+					},
+					"game_id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"rating",
+					"review_text",
+					"game_id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Review_UpdateDTO": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"rating": {
+						"type": "number",
+						"format": "double"
+					},
+					"review_text": {
+						"type": "string"
+					},
+					"game_id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"rating",
+					"review_text",
+					"game_id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"ReviewDTO": {
 				"properties": {
 					"id": {
@@ -68,6 +141,44 @@
 					"rating",
 					"review_text",
 					"game"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Game_CreateDTO": {
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"console_id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"title",
+					"console_id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Game_UpdateDTO": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"title": {
+						"type": "string"
+					},
+					"console_id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"title",
+					"console_id"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -94,7 +205,7 @@
 							"application/json": {
 								"schema": {
 									"items": {
-										"$ref": "#/components/schemas/ReviewDTO"
+										"$ref": "#/components/schemas/Review_GetDTO"
 									},
 									"type": "array"
 								}
@@ -118,7 +229,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/ReviewDTO"
+											"$ref": "#/components/schemas/Review_CreateDTO"
 										}
 									],
 									"nullable": true
@@ -137,7 +248,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/ReviewDTO"
+								"$ref": "#/components/schemas/Review_CreateDTO"
 							}
 						}
 					}
@@ -155,7 +266,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/ReviewDTO"
+											"$ref": "#/components/schemas/Review_GetDTO"
 										}
 									],
 									"nullable": true
@@ -190,7 +301,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/ReviewDTO"
+											"$ref": "#/components/schemas/Review_UpdateDTO"
 										}
 									],
 									"nullable": true
@@ -219,7 +330,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/ReviewDTO"
+								"$ref": "#/components/schemas/Review_UpdateDTO"
 							}
 						}
 					}
@@ -283,7 +394,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/GameDTO"
+											"$ref": "#/components/schemas/Game_CreateDTO"
 										}
 									],
 									"nullable": true
@@ -302,7 +413,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/GameDTO"
+								"$ref": "#/components/schemas/Game_CreateDTO"
 							}
 						}
 					}
@@ -355,7 +466,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/GameDTO"
+											"$ref": "#/components/schemas/Game_UpdateDTO"
 										}
 									],
 									"nullable": true
@@ -384,7 +495,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/GameDTO"
+								"$ref": "#/components/schemas/Game_UpdateDTO"
 							}
 						}
 					}
